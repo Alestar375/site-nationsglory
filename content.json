@@ -1,16 +1,29 @@
 {
-  "country_name": "Mon Pays",
-  "slogan": "Notre Slogan",
-  "description": "Description du pays...",
-  "discord_link": "https://discord.gg/",
+  "country_name": "Empire du Japon",
+  "server_name": "Blue",
+  "slogan": "Bâtir la grandeur, prospérer par le commerce.",
+  "description": "Bienvenue sur le portail officiel de notre nation. Nous sommes une faction passionnée d'architecture majestueuse, d'urbanisme soigné et de dynamisme économique.",
+  "discord_link": "https://discord.gg/votrelink",
   "tabs": [
     {
-      "title": "Gouvernement",
-      "content": "Voici la liste de nos ministres..."
+      "id": "lore",
+      "title": "Lore",
+      "content": "### Histoire de notre Faction\n\nNotre pays a été fondé au tout début du serveur..."
     },
     {
+      "id": "gouvernement",
+      "title": "Gouvernement",
+      "content": "### Membres du Gouvernement\n\n* **Président :** Joueur1\n* **Ministre :** Joueur2"
+    },
+    {
+      "id": "architecture",
+      "title": "Architecture & Commerce",
+      "content": "### Nos Règles d'Architecture\n\nToutes les constructions doivent respecter le style du pays."
+    },
+    {
+      "id": "recrutement",
       "title": "Recrutement",
-      "content": "Pour nous rejoindre, contactez-nous sur Discord !"
+      "content": "### Nous Rejoindre\n\nPour postuler, rendez-vous sur notre Discord officiel !"
     }
   ]
 }
