@@ -2,5 +2,15 @@
   "country_name": "Mon Pays",
   "slogan": "Notre Slogan",
   "description": "Description du pays...",
-  "discord_link": "https://discord.gg/"
+  "discord_link": "https://discord.gg/",
+  "tabs": [
+    {
+      "title": "Gouvernement",
+      "content": "Voici la liste de nos ministres..."
+    },
+    {
+      "title": "Recrutement",
+      "content": "Pour nous rejoindre, contactez-nous sur Discord !"
+    }
+  ]
 }
