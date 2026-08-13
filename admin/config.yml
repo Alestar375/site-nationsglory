@@ -10,22 +10,92 @@ collections:
     label: "Contenu du site"
     files:
       - file: "content.json"
-        label: "Configuration Générale & Pages"
+        label: "Tableau de Bord & Gestion Globale"
         name: "info"
         fields:
-          # --- Entête et Réseaux ---
-          - { label: "Nom du Pays (En-tête & Titre)", name: "country_name", widget: "string" }
-          - { label: "Nom du Serveur NationsGlory", name: "server_name", widget: "string" }
-          - { label: "Slogan / Citation", name: "slogan", widget: "string" }
-          - { label: "Texte de bienvenue (Accueil)", name: "description", widget: "text" }
-          - { label: "Lien de l'invitation Discord", name: "discord_link", widget: "string" }
-          
-          # --- Gestion Totale des Onglets ---
-          - label: "Gestion des Onglets / Pages"
+          # --- INFORMATIONS GÉNÉRALES ---
+          - { label: "Nom du Pays", name: "country_name", widget: "string" }
+          - { label: "Nom du Serveur", name: "server_name", widget: "string" }
+          - { label: "Slogan", name: "slogan", widget: "string" }
+          - { label: "Lien Discord", name: "discord_link", widget: "string" }
+
+          # --- 📊 STATISTIQUES & METRICS ---
+          - label: "Statistiques du Pays"
+            name: "stats"
+            widget: "object"
+            fields:
+              - { label: "Niveau du Pays (Level)", name: "level", widget: "number" }
+              - { label: "Notations / Note globale", name: "rating", widget: "string" }
+              - { label: "Nombre de Claims", name: "claims", widget: "number" }
+              - { label: "MMR", name: "mmr", widget: "number" }
+              - { label: "Power (ex: 150/200)", name: "power", widget: "string" }
+              - { label: "Date de création", name: "created_at", widget: "string" }
+              - { label: "Nombre de joueurs", name: "players_count", widget: "number" }
+              - { label: "Solde en Banque ($)", name: "bank_balance", widget: "string" }
+
+          # --- 🏛️ MINISTÈRES & GOUVERNEMENT ---
+          - label: "Ministères & Cadres"
+            name: "ministries"
+            widget: "list"
+            summary: "{{fields.name}} - {{fields.player}}"
+            fields:
+              - { label: "Nom du Ministère / Rôle", name: "name", widget: "string" }
+              - { label: "Pseudo Minecraft", name: "player", widget: "string" }
+              - { label: "Missions / Description", name: "description", widget: "text" }
+
+          # --- 🔬 RECHERCHE & DÉVELOPPEMENT (R&D) ---
+          - label: "Recherche & Développement"
+            name: "rd_branches"
+            widget: "object"
+            fields:
+              - label: "Général"
+                name: "general"
+                widget: "list"
+                fields:
+                  - { label: "Projet", name: "title", widget: "string" }
+                  - { label: "Progression (%)", name: "progress", widget: "number" }
+              - label: "Ressources"
+                name: "resources"
+                widget: "list"
+                fields:
+                  - { label: "Projet", name: "title", widget: "string" }
+                  - { label: "Progression (%)", name: "progress", widget: "number" }
+              - label: "Industrie"
+                name: "industry"
+                widget: "list"
+                fields:
+                  - { label: "Projet", name: "title", widget: "string" }
+                  - { label: "Progression (%)", name: "progress", widget: "number" }
+              - label: "Militaire"
+                name: "military"
+                widget: "list"
+                fields:
+                  - { label: "Projet", name: "title", widget: "string" }
+                  - { label: "Progression (%)", name: "progress", widget: "number" }
+              - label: "Technologie"
+                name: "technology"
+                widget: "list"
+                fields:
+                  - { label: "Projet", name: "title", widget: "string" }
+                  - { label: "Progression (%)", name: "progress", widget: "number" }
+
+          # --- 🗺️ PARCELLES & TERRITOIRES ---
+          - label: "Gestion des Parcelles"
+            name: "parcels"
+            widget: "list"
+            summary: "{{fields.name}} ({{fields.status}})"
+            fields:
+              - { label: "Nom/Numéro de Parcelle", name: "name", widget: "string" }
+              - { label: "Coordonnées (X, Z)", name: "coords", widget: "string" }
+              - { label: "Prix ($)", name: "price", widget: "number" }
+              - { label: "Statut", name: "status", widget: "select", options: ["Libre", "Acheter", "Réservé", "Occupé"] }
+              - { label: "Propriétaire (Pseudo)", name: "owner", widget: "string", required: false }
+
+          # --- ONGLETS CLASSIQUES DYNAMIQUES ---
+          - label: "Autres Onglets Personnalisés"
             name: "tabs"
             widget: "list"
             summary: "{{fields.title}}"
             fields:
-              - { label: "Titre de l'onglet (ex: Lore, Gouvernement...)", name: "title", widget: "string" }
-              - { label: "Identifiant unique (en minuscules, ex: lore)", name: "id", widget: "string" }
-              - { label: "Contenu de la page (Texte ou HTML)", name: "content", widget: "markdown" }
+              - { label: "Titre de l'onglet", name: "title", widget: "string" }
+              - { label: "Contenu", name: "content", widget: "markdown" }
