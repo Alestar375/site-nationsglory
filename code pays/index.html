@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!-- ==================== PARTIE 0 : La base ==================== -->
+<html lang="fr">
+
+<!-- ==================== PARTIE 1 : En-tête & Styles ==================== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nom de ton Pays - NationsGlory</title>
+    
+<!-- ==================== PARTIE 1 : Design & Styles CSS ==================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COULEURS ET THÈME DU SITE */
+        :root {
+            --bg-dark: #121418;        /* Couleur de fond générale (sombre) */
+            --card-bg: #1b1e24;        /* Fond des blocs / cartes */
+            --card-border: #2d323e;    /* Bordure discrète */
+            --accent-color: #d4af37;   /* Couleur Or / Doree */
+            --accent-hover: #f1c40f;   /* Or plus clair au survol */
+            --text-main: #f0f2f5;      /* Texte principal (blanc cassé) */
+            --text-muted: #a0a8b8;     /* Texte secondaire (gris) */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* EN-TÊTE & BARRE D'ONGLETS FIXE */
+        header {
+            background-color: rgba(18, 20, 24, 0.95);
+            border-bottom: 2px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Effet au survol des onglets */
+        nav a:hover, nav a.active {
+            background-color: var(--accent-color);
+            color: #000000;
+        }
+
+        /* MISE EN PAGE DU CONTENU */
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* SYSTEME D'ONGLETS (MASQUER / AFFICHER) */
+        .tab-content {
+            display: none; /* Caches par defaut */
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block; /* Visible uniquement quand actif */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CARTES ET BLOCS DE TEXTE */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin: 25px 0 15px 0;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 8px;
+        }
+
+        .slogan {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        /* BOUTON DISCORD */
+        .btn-discord {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #000000;
+            font-weight: 700;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-discord:hover {
+            background-color: var(--accent-hover);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* ADAPTATION MOBILE */
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+
+<!-- ==================== PARTIE 2 : Le corps du site ==================== -->
+<body>
+
+    <!-- ==================== PARTIE 2.1 : Menu de Navigation ==================== -->
+    <header>
+	 <div class ="header-container">
+    <div class="logo"> [nom du Pays]</div>
+
+    <nav>
+		<ul>
+<li><a onclick="switchTab('accueil')" class="nav-link active">Accueil</a></li>
+                    <li><a onclick="switchTab('lore')" class="nav-link">Lore</a></li>
+                    <li><a onclick="switchTab('gouvernement')" class="nav-link">Gouvernement</a></li>
+                    <li><a onclick="switchTab('commerce')" class="nav-link">Architecture & Commerce</a></li>
+                    <li><a onclick="switchTab('recrutement')" class="nav-link">Recrutement</a></li>	
+</ul>
+            </nav>
+        </div>	
+	</header>
+
+    <!-- ==================== PARTIE 2.2 : Contenu des Onglets ==================== -->
+<main>
+
+        <!-- ONGLET 1 : ACCUEIL -->
+        <section id="accueil" class="tab-content active">
+            <div class="card">
+                <h1>Bienvenue en [Nom de ton Pays]</h1>
+                <p class="slogan">" Bâtir la grandeur, prospérer par le commerce. "</p>
+                <p>Bienvenue sur le portail officiel de notre nation sur le serveur <strong>NationsGlory [Nom du Serveur]</strong>. Nous sommes une faction passionnée d'architecture majestueuse, d'urbanisme soigné et de dynamisme économique.</p>
+                <a href="https://discord.gg/EXEMPLE" class="btn-discord" target="_blank">Rejoindre le Discord Officiel</a>
+            </div>
+        </section>
+
+        <!-- ONGLET 2 : LORE -->
+        <section id="lore" class="tab-content">
+            <div class="card">
+                <h1>📜 Notre Histoire (Lore RP)</h1>
+                <p>Né de la volonté d'explorateurs et d'architectes chevronnés, le pays de <strong>[Nom de ton Pays]</strong> a été fondé avec une vision claire : transformer un territoire sauvage en une cité resplendissante.</p>
+                <h2>🏛️ La Philosophie du Pays</h2>
+                <p>Contrairement aux nations axées uniquement sur la guerre, nous croyons en la force des pierres, de l'artisanat et des échanges internationaux.</p>
+            </div>
+        </section>
+
+        <!-- ONGLET 3 : GOUVERNEMENT -->
+        <section id="gouvernement" class="tab-content">
+            <div class="card">
+                <h1>⚖️ Organisation de l'État</h1>
+                <h2>Conseil du Pays</h2>
+                <p><strong>Leader :</strong> [Ton Pseudo]</p>
+                <p><strong>Grand Architecte :</strong> [Pseudo]</p>
+                
+                <h2>Code Civil & Règles Internes</h2>
+                <ul>
+                    <li>Respect du Style Architectural de la capitale.</li>
+                    <li>Civisme & Entraide obligatoire entre citoyens.</li>
+                    <li>Cotisations collectives pour financer les projets.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ONGLET 4 : ARCHITECTURE & COMMERCE -->
+        <section id="commerce" class="tab-content">
+            <div class="card">
+                <h1>🏛️ Architecture & 💰 Commerce</h1>
+                <h2>Secteur Bâtisseur</h2>
+                <p>Notre capitale regroupe des monuments imposants et un réseau routier optimisé. Nous aidons chaque citoyen à concevoir sa parcelle.</p>
+                <h2>Secteur Économique</h2>
+                <p>Boutiques officielles au spawn du serveur pour vendre nos ressources récoltées aux meilleurs prix.</p>
+            </div>
+        </section>
+
+        <!-- ONGLET 5 : RECRUTEMENT -->
+        <section id="recrutement" class="tab-content">
+            <div class="card">
+                <h1>📝 Rejoindre nos Rangs</h1>
+                <p>Nous recherchons des Builders, Farmeurs et Commerçants motivés !</p>
+                <p><strong>Critères :</strong> Avoir Discord, un micro correct et respecter le règlement.</p>
+                <a href="https://discord.gg/EXEMPLE" class="btn-discord" target="_blank">Poser sa candidature sur Discord</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== PARTIE 2.3 : Scripts JavaScript ==================== -->
+<script>
+        function switchTab(tabId) {
+            // 1. Masquer tous les contenus
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // 2. Retirer l'état actif des onglets du menu
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => link.classList.remove('active'));
+
+            // 3. Afficher l'onglet sélectionné
+            document.getElementById(tabId).classList.add('active');
+
+            // 4. Mettre en avant l'onglet cliqué
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+<!-- ==================== FIN DU CORPS ==================== -->
+
+</html>
