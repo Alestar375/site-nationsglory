@@ -6,15 +6,14 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "contenu"
-    label: "Contenu du Site"
+  - name: "content"
+    label: "Contenu du site"
     files:
       - file: "content.json"
-        label: "Informations du Pays"
-        name: "infos"
+        label: "Informations Principales"
+        name: "info"
         fields:
-          - { label: "Nom du Pays", name: "nom_pays", widget: "string" }
-          - { label: "Serveur NG", name: "serveur", widget: "string" }
+          - { label: "Nom du Pays", name: "country_name", widget: "string" }
           - { label: "Slogan", name: "slogan", widget: "string" }
-          - { label: "Histoire / Lore", name: "lore_text", widget: "markdown" }
+          - { label: "Description / Lore", name: "description", widget: "text" }
           - { label: "Lien Discord", name: "discord_link", widget: "string" }
