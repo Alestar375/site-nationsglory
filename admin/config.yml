@@ -10,27 +10,22 @@ collections:
     label: "Contenu du site"
     files:
       - file: "content.json"
-        label: "Informations Principales"
+        label: "Configuration Générale & Pages"
         name: "info"
         fields:
-          - label: "Nom du Pays"
-            name: "country_name"
-            widget: "string"
-          - label: "Slogan"
-            name: "slogan"
-            widget: "string"
-          - label: "Description / Lore"
-            name: "description"
-            widget: "text"
-          - label: "Lien Discord"
-            name: "discord_link"
-            widget: "string"
-
-          # --- NOUVEAU : GESTION DES ONGLETS DYNAMIQUES ---
-          - label: "Onglets du site"
+          # --- Entête et Réseaux ---
+          - { label: "Nom du Pays (En-tête & Titre)", name: "country_name", widget: "string" }
+          - { label: "Nom du Serveur NationsGlory", name: "server_name", widget: "string" }
+          - { label: "Slogan / Citation", name: "slogan", widget: "string" }
+          - { label: "Texte de bienvenue (Accueil)", name: "description", widget: "text" }
+          - { label: "Lien de l'invitation Discord", name: "discord_link", widget: "string" }
+          
+          # --- Gestion Totale des Onglets ---
+          - label: "Gestion des Onglets / Pages"
             name: "tabs"
             widget: "list"
             summary: "{{fields.title}}"
             fields:
-              - { label: "Titre de l'onglet", name: "title", widget: "string" }
-              - { label: "Contenu de la page", name: "content", widget: "markdown" }
+              - { label: "Titre de l'onglet (ex: Lore, Gouvernement...)", name: "title", widget: "string" }
+              - { label: "Identifiant unique (en minuscules, ex: lore)", name: "id", widget: "string" }
+              - { label: "Contenu de la page (Texte ou HTML)", name: "content", widget: "markdown" }
