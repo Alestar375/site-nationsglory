@@ -26,71 +26,57 @@
     </div>
   </main>
 
-  <script>
-    // Chargement dynamique des données depuis content.json
-    fetch('content.json')
-      .then(response => response.json())
-      .then(data => {
-        // 1. Mise à jour des textes globaux
-        document.getElementById('site-title').innerText = data.country_name;
-        document.getElementById('header-logo').innerText = data.country_name.toUpperCase();
+<script>
+  // Chargement dynamique des données depuis content.json sans toucher au style
+  fetch('content.json')
+    .then(response => response.json())
+    .then(data => {
+      // 1. Mise à jour des textes
+      if (data.country_name) {
+        document.querySelectorAll('.logo, header h1, [id*="logo"]').forEach(el => {
+          el.innerText = data.country_name.toUpperCase();
+        });
+      }
 
-        const navUl = document.getElementById('nav-tabs');
-        const mainContent = document.getElementById('main-content');
+      const navUl = document.querySelector('nav ul');
+      const mainContent = document.querySelector('.card, main');
 
-        // Onglet ACCUEIL (Par défaut)
-        function showHome() {
-          mainContent.innerHTML = `
-            <h1>Bienvenue en ${data.country_name}</h1>
-            <p class="subtitle"><em>"${data.slogan}"</em></p>
-            <p>${data.description.replace('NationsGlory [Nom du Serveur]', 'NationsGlory ' + data.server_name)}</p>
-            <br>
-            <a href="${data.discord_link}" target="_blank" class="btn-discord">REJOINDRE LE DISCORD OFFICIEL</a>
-          `;
-          updateActiveNav('home');
-        }
+      if (navUl && mainContent) {
+        // Vider la navigation pour la reconstruire dynamiquement
+        navUl.innerHTML = '';
 
-        // Création du bouton Accueil dans la nav
+        // Bouton ACCUEIL
         const homeLi = document.createElement('li');
-        homeLi.innerHTML = `<a href="#" id="nav-home" class="active">Accueil</a>`;
-        homeLi.onclick = (e) => { e.preventDefault(); showHome(); };
+        homeLi.innerHTML = `<a href="#" class="active">Accueil</a>`;
+        homeLi.onclick = (e) => {
+          e.preventDefault();
+          location.reload(); // Recharge la page pour revenir au contenu de base
+        };
         navUl.appendChild(homeLi);
 
-        // 2. Génération dynamique de tous tes autres onglets
+        // Ajout dynamique de tous les autres onglets créés dans l'Admin
         if (data.tabs && data.tabs.length > 0) {
           data.tabs.forEach(tab => {
             const li = document.createElement('li');
-            li.innerHTML = `<a href="#" id="nav-${tab.id}">${tab.title}</a>`;
+            li.innerHTML = `<a href="#">${tab.title}</a>`;
             li.onclick = (e) => {
               e.preventDefault();
-              mainContent.innerHTML = `<h1>${tab.title}</h1><div>${tab.content}</div>`;
-              updateActiveNav(tab.id);
+              
+              // Mettre à jour la classe active sur le menu
+              document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+              li.querySelector('a').classList.add('active');
+
+              // Remplacer le contenu principal tout en gardant le style de la carte
+              mainContent.innerHTML = `
+                <h1 style="color: #f1c40f; margin-bottom: 20px;">${tab.title}</h1>
+                <div style="line-height: 1.6;">${tab.content}</div>
+              `;
             };
             navUl.appendChild(li);
           });
         }
-
-        function updateActiveNav(activeId) {
-          document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-          const current = document.getElementById(`nav-${activeId}`);
-          if (current) current.classList.add('active');
-        }
-
-        // Afficher l'accueil au chargement
-        showHome();
-      });
-  </script>
-
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
+      }
+    });
+</script>
 </body>
 </html>
