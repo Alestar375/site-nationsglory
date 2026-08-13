@@ -1,29 +1,40 @@
 {
-  "country_name": "pays à définir",
-  "server_name": "à définir",
+  "country_name": "Empire du Japon",
+  "server_name": "Blue",
   "slogan": "Bâtir la grandeur, prospérer par le commerce.",
-  "description": "Bienvenue sur le portail officiel de notre nation. Nous sommes une faction passionnée d'architecture majestueuse, d'urbanisme soigné et de dynamisme économique.",
-  "discord_link": "https://discord.gg/RBunyn3Vq",
-  "tabs": [
+  "discord_link": "https://discord.gg/",
+  "stats": {
+    "level": 15,
+    "rating": "18.5/20",
+    "claims": 142,
+    "mmr": 1250,
+    "power": "180/200",
+    "created_at": "12/01/2026",
+    "players_count": 24,
+    "bank_balance": "1 450 000 $"
+  },
+  "ministries": [
     {
-      "id": "lore",
-      "title": "Lore",
-      "content": "### Histoire de notre Faction\n\nNotre pays a été fondé au tout début du serveur..."
-    },
-    {
-      "id": "gouvernement",
-      "title": "Gouvernement",
-      "content": "### Membres du Gouvernement\n\n* **Président :** Joueur1\n* **Ministre :** Joueur2"
-    },
-    {
-      "id": "architecture",
-      "title": "Architecture & Commerce",
-      "content": "### Nos Règles d'Architecture\n\nToutes les constructions doivent respecter le style du pays."
-    },
-    {
-      "id": "recrutement",
-      "title": "Recrutement",
-      "content": "### Nous Rejoindre\n\nPour postuler, rendez-vous sur notre Discord officiel !"
+      "name": "Ministère de la Défense",
+      "player": "General_Gamer",
+      "description": "Gestion des guerres, des alliances et du recrutement militaire."
     }
-  ]
+  ],
+  "rd_branches": {
+    "general": [{ "title": "Bases Administratives", "progress": 100 }],
+    "resources": [{ "title": "Automatisations Minières", "progress": 60 }],
+    "industry": [{ "title": "Usine à Potion", "progress": 85 }],
+    "military": [{ "title": "Tactiques de Siège", "progress": 40 }],
+    "technology": [{ "title": "Réseau Redstone Central", "progress": 20 }]
+  },
+  "parcels": [
+    {
+      "name": "Parcelle Capitale #01",
+      "coords": "X: 120, Z: -450",
+      "price": 5000,
+      "status": "Libre",
+      "owner": "-"
+    }
+  ],
+  "tabs": []
 }
