@@ -25,3 +25,12 @@ collections:
           - label: "Lien Discord"
             name: "discord_link"
             widget: "string"
+
+          # --- NOUVEAU : GESTION DES ONGLETS DYNAMIQUES ---
+          - label: "Onglets du site"
+            name: "tabs"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Titre de l'onglet", name: "title", widget: "string" }
+              - { label: "Contenu de la page", name: "content", widget: "markdown" }
