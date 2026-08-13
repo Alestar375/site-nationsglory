@@ -13,7 +13,15 @@ collections:
         label: "Informations Principales"
         name: "info"
         fields:
-          - { label: "Nom du Pays", name: "country_name", widget: "string" }
-          - { label: "Slogan", name: "slogan", widget: "string" }
-          - { label: "Description / Lore", name: "description", widget: "text" }
-          - { label: "Lien Discord", name: "discord_link", widget: "string" }
+          - label: "Nom du Pays"
+            name: "country_name"
+            widget: "string"
+          - label: "Slogan"
+            name: "slogan"
+            widget: "string"
+          - label: "Description / Lore"
+            name: "description"
+            widget: "text"
+          - label: "Lien Discord"
+            name: "discord_link"
+            widget: "string"
