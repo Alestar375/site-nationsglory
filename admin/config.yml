@@ -13,13 +13,14 @@ collections:
         label: "Tableau de Bord & Gestion Globale"
         name: "info"
         fields:
-          # --- INFORMATIONS GÉNÉRALES ---
+          # --- ⚙️ INFORMATIONS GÉNÉRALES ---
           - { label: "Nom du Pays", name: "country_name", widget: "string" }
           - { label: "Nom du Serveur", name: "server_name", widget: "string" }
           - { label: "Slogan", name: "slogan", widget: "string" }
+          - { label: "Description / Message d'accueil", name: "description", widget: "text" }
           - { label: "Lien Discord", name: "discord_link", widget: "string" }
 
-          # --- 📊 STATISTIQUES & METRICS ---
+          # --- 📊 STATISTIQUES DU PAYS ---
           - label: "Statistiques du Pays"
             name: "stats"
             widget: "object"
@@ -28,7 +29,7 @@ collections:
               - { label: "Notations / Note globale", name: "rating", widget: "string" }
               - { label: "Nombre de Claims", name: "claims", widget: "number" }
               - { label: "MMR", name: "mmr", widget: "number" }
-              - { label: "Power (ex: 150/200)", name: "power", widget: "string" }
+              - { label: "Power (ex: 180/200)", name: "power", widget: "string" }
               - { label: "Date de création", name: "created_at", widget: "string" }
               - { label: "Nombre de joueurs", name: "players_count", widget: "number" }
               - { label: "Solde en Banque ($)", name: "bank_balance", widget: "string" }
@@ -51,30 +52,35 @@ collections:
               - label: "Général"
                 name: "general"
                 widget: "list"
+                summary: "{{fields.title}} ({{fields.progress}}%)"
                 fields:
                   - { label: "Projet", name: "title", widget: "string" }
                   - { label: "Progression (%)", name: "progress", widget: "number" }
               - label: "Ressources"
                 name: "resources"
                 widget: "list"
+                summary: "{{fields.title}} ({{fields.progress}}%)"
                 fields:
                   - { label: "Projet", name: "title", widget: "string" }
                   - { label: "Progression (%)", name: "progress", widget: "number" }
               - label: "Industrie"
                 name: "industry"
                 widget: "list"
+                summary: "{{fields.title}} ({{fields.progress}}%)"
                 fields:
                   - { label: "Projet", name: "title", widget: "string" }
                   - { label: "Progression (%)", name: "progress", widget: "number" }
               - label: "Militaire"
                 name: "military"
                 widget: "list"
+                summary: "{{fields.title}} ({{fields.progress}}%)"
                 fields:
                   - { label: "Projet", name: "title", widget: "string" }
                   - { label: "Progression (%)", name: "progress", widget: "number" }
               - label: "Technologie"
                 name: "technology"
                 widget: "list"
+                summary: "{{fields.title}} ({{fields.progress}}%)"
                 fields:
                   - { label: "Projet", name: "title", widget: "string" }
                   - { label: "Progression (%)", name: "progress", widget: "number" }
@@ -91,11 +97,30 @@ collections:
               - { label: "Statut", name: "status", widget: "select", options: ["Libre", "Acheter", "Réservé", "Occupé"] }
               - { label: "Propriétaire (Pseudo)", name: "owner", widget: "string", required: false }
 
-          # --- ONGLETS CLASSIQUES DYNAMIQUES ---
+          # --- 🛒 BOUTIQUE & COMMANDES ---
+          - label: "Boutique & Commandes"
+            name: "shop"
+            widget: "list"
+            summary: "{{fields.category_name}}"
+            fields:
+              - { label: "Nom de la sous-section (ex: Minerais, Armes, Consommables...)", name: "category_name", widget: "string" }
+              - label: "Articles"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.item_name}} - {{fields.price}}"
+                fields:
+                  - { label: "Nom de l'item", name: "item_name", widget: "string" }
+                  - { label: "Prix ($)", name: "price", widget: "string" }
+                  - { label: "Format / Quantité (ex: /stack, /unité, Sur commande)", name: "unit", widget: "string" }
+                  - { label: "Description (facultatif)", name: "description", widget: "string", required: false }
+                  - { label: "Statut", name: "status", widget: "select", options: ["En Stock", "Rupture", "Sur Commande"], default: "En Stock" }
+
+          # --- 📄 ONGLETS & PAGES SUR MESURE ---
           - label: "Autres Onglets Personnalisés"
             name: "tabs"
             widget: "list"
             summary: "{{fields.title}}"
             fields:
               - { label: "Titre de l'onglet", name: "title", widget: "string" }
-              - { label: "Contenu", name: "content", widget: "markdown" }
+              - { label: "Identifiant unique (en minuscules, ex: lore)", name: "id", widget: "string" }
+              - { label: "Contenu (Texte ou Markdown)", name: "content", widget: "markdown" }
