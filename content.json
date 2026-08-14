@@ -2,8 +2,9 @@
   "country_name": "Empire du Japon",
   "server_name": "Blue",
   "slogan": "Bâtir la grandeur, prospérer par le commerce.",
-  "description": "Bienvenue sur le portail officiel de notre nation. Nous sommes une faction passionnée d'architecture majestueuse, d'urbanisme soigné et de dynamisme économique.",
+  "description": "Bienvenue sur le portail officiel de notre nation. Faction passionnée d'architecture, de puissance militaire et de développement économique.",
   "discord_link": "https://discord.gg/votrelink",
+  "dynmap_url": "https://map.nationsglory.fr/",
   "stats": {
     "level": 15,
     "rating": "18.5/20",
@@ -14,6 +15,28 @@
     "players_count": 24,
     "bank_balance": "1 450 000 $"
   },
+  "news": [
+    {
+      "title": "Inauguration du Nouveau Centre Commercial",
+      "date": "14/08/2026",
+      "author": "Ministère de l'Économie",
+      "content": "La zone commerciale est désormais ouverte ! Des parcelles sont disponibles à l'achat pour tous nos citoyens."
+    }
+  ],
+  "diplomacy": [
+    {
+      "nation_name": "Royaume-Uni",
+      "relation": "Allié",
+      "flag_url": "https://flagcdn.com/w80/gb.png",
+      "notes": "Pacte de défense mutuelle signé."
+    },
+    {
+      "nation_name": "Empire Russe",
+      "relation": "PNA (Pacte Non-Agression)",
+      "flag_url": "https://flagcdn.com/w80/ru.png",
+      "notes": "Accord commercial sur l'uranium."
+    }
+  ],
   "ministries": [
     {
       "name": "Ministère de la Défense",
@@ -27,21 +50,11 @@
     }
   ],
   "rd_branches": {
-    "general": [
-      { "title": "Bases Administratives", "progress": 100 }
-    ],
-    "resources": [
-      { "title": "Automatisations Minières", "progress": 60 }
-    ],
-    "industry": [
-      { "title": "Usine à Potion", "progress": 85 }
-    ],
-    "military": [
-      { "title": "Tactiques de Siège", "progress": 40 }
-    ],
-    "technology": [
-      { "title": "Réseau Redstone Central", "progress": 20 }
-    ]
+    "general": [{ "title": "Bases Administratives", "progress": 100 }],
+    "resources": [{ "title": "Automatisations Minières", "progress": 60 }],
+    "industry": [{ "title": "Usine à Potion", "progress": 85 }],
+    "military": [{ "title": "Tactiques de Siège", "progress": 40 }],
+    "technology": [{ "title": "Réseau Redstone Central", "progress": 20 }]
   },
   "parcels": [
     {
@@ -50,13 +63,6 @@
       "price": 5000,
       "status": "Libre",
       "owner": "-"
-    },
-    {
-      "name": "Zone Commerciale #03",
-      "coords": "X: 145, Z: -410",
-      "price": 12000,
-      "status": "Occupé",
-      "owner": "Marchand_Mc"
     }
   ],
   "shop": [
@@ -67,41 +73,27 @@
           "item_name": "Stack de Diamants",
           "price": "1 200 $",
           "unit": "le stack",
-          "description": "Livré directement au spawn.",
+          "description": "Livré au spawn.",
           "status": "En Stock"
-        },
-        {
-          "item_name": "Lingots d'Uranium",
-          "price": "5 000 $",
-          "unit": "l'unité",
-          "description": "Sur commande uniquement.",
-          "status": "Sur Commande"
         }
       ]
+    }
+  ],
+  "rules": [
+    {
+      "title": "Article 1 - Respect & Entraide",
+      "content": "Le respect entre membres est primordial. Le double compte est strictement interdit au sein de la nation."
     },
     {
-      "category_name": "Équipement & Armement",
-      "items": [
-        {
-          "item_name": "Set d'Armure P4 Unbreaking 3",
-          "price": "8 500 $",
-          "unit": "le set",
-          "description": "Enclume & enchantements max.",
-          "status": "En Stock"
-        }
-      ]
+      "title": "Article 2 - Gestion du Power",
+      "content": "Tout joueur se déconnectant en sous-power ou provoquant un pillage sera exclu et banni des claims."
     }
   ],
   "tabs": [
     {
       "id": "lore",
       "title": "Lore",
-      "content": "### Histoire de notre Faction\n\nNotre pays a été fondé au tout début du serveur..."
-    },
-    {
-      "id": "recrutement",
-      "title": "Recrutement",
-      "content": "### Nous Rejoindre\n\nPour postuler, rendez-vous sur notre Discord officiel !"
+      "content": "### Histoire de notre Faction\n\nNotre pays a été fondé au début du serveur..."
     }
   ]
 }
