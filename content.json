@@ -2,7 +2,8 @@
   "country_name": "Empire du Japon",
   "server_name": "Blue",
   "slogan": "Bâtir la grandeur, prospérer par le commerce.",
-  "discord_link": "https://discord.gg/",
+  "description": "Bienvenue sur le portail officiel de notre nation. Nous sommes une faction passionnée d'architecture majestueuse, d'urbanisme soigné et de dynamisme économique.",
+  "discord_link": "https://discord.gg/votrelink",
   "stats": {
     "level": 15,
     "rating": "18.5/20",
@@ -18,14 +19,29 @@
       "name": "Ministère de la Défense",
       "player": "General_Gamer",
       "description": "Gestion des guerres, des alliances et du recrutement militaire."
+    },
+    {
+      "name": "Ministère de l'Économie",
+      "player": "Trader_Master",
+      "description": "Gestion des banques, du commerce et de la boutique nationale."
     }
   ],
   "rd_branches": {
-    "general": [{ "title": "Bases Administratives", "progress": 100 }],
-    "resources": [{ "title": "Automatisations Minières", "progress": 60 }],
-    "industry": [{ "title": "Usine à Potion", "progress": 85 }],
-    "military": [{ "title": "Tactiques de Siège", "progress": 40 }],
-    "technology": [{ "title": "Réseau Redstone Central", "progress": 20 }]
+    "general": [
+      { "title": "Bases Administratives", "progress": 100 }
+    ],
+    "resources": [
+      { "title": "Automatisations Minières", "progress": 60 }
+    ],
+    "industry": [
+      { "title": "Usine à Potion", "progress": 85 }
+    ],
+    "military": [
+      { "title": "Tactiques de Siège", "progress": 40 }
+    ],
+    "technology": [
+      { "title": "Réseau Redstone Central", "progress": 20 }
+    ]
   },
   "parcels": [
     {
@@ -34,7 +50,58 @@
       "price": 5000,
       "status": "Libre",
       "owner": "-"
+    },
+    {
+      "name": "Zone Commerciale #03",
+      "coords": "X: 145, Z: -410",
+      "price": 12000,
+      "status": "Occupé",
+      "owner": "Marchand_Mc"
     }
   ],
-  "tabs": []
+  "shop": [
+    {
+      "category_name": "Ressources & Minerais",
+      "items": [
+        {
+          "item_name": "Stack de Diamants",
+          "price": "1 200 $",
+          "unit": "le stack",
+          "description": "Livré directement au spawn.",
+          "status": "En Stock"
+        },
+        {
+          "item_name": "Lingots d'Uranium",
+          "price": "5 000 $",
+          "unit": "l'unité",
+          "description": "Sur commande uniquement.",
+          "status": "Sur Commande"
+        }
+      ]
+    },
+    {
+      "category_name": "Équipement & Armement",
+      "items": [
+        {
+          "item_name": "Set d'Armure P4 Unbreaking 3",
+          "price": "8 500 $",
+          "unit": "le set",
+          "description": "Enclume & enchantements max.",
+          "status": "En Stock"
+        }
+      ]
+    }
+  ],
+  "tabs": [
+    {
+      "id": "lore",
+      "title": "Lore",
+      "content": "### Histoire de notre Faction\n\nNotre pays a été fondé au tout début du serveur..."
+    },
+    {
+      "id": "recrutement",
+      "title": "Recrutement",
+      "content": "### Nous Rejoindre\n\nPour postuler, rendez-vous sur notre Discord officiel !"
+    }
+  ]
 }
