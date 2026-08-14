@@ -1,0 +1,54 @@
+/* --- Style Sombre & Doré pour l'Admin Decap CMS --- */
+
+/* Fond général de l'interface */
+body {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+/* En-tête / Barre de navigation du CMS */
+header, div[class*="AppHeader"] {
+  background-color: #1a1a1a !important;
+  border-bottom: 2px solid #f1c40f !important; /* Liseré doré */
+}
+
+/* Cartes de contenu et panneaux latéraux */
+div[class*="SidebarContainer"], 
+div[class*="CollectionTop"], 
+div[class*="Card"] {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333 !important;
+  border-radius: 8px !important;
+}
+
+/* Titres et textes importants */
+h1, h2, h3, label {
+  color: #f1c40f !important; /* Couleur dorée */
+}
+
+/* Boutons principaux (Enregistrer, Publier...) */
+button[class*="Button"], a[class*="Button"] {
+  background-color: #f1c40f !important;
+  color: #121212 !important;
+  font-weight: bold !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+}
+
+button[class*="Button"]:hover {
+  background-color: #d4ac0d !important;
+  transform: translateY(-1px);
+}
+
+/* Champs de texte et zones d'édition */
+input, textarea, select {
+  background-color: #2b2b2b !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+  border-radius: 4px !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #f1c40f !important;
+  outline: none !important;
+}
