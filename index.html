@@ -3,80 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="site-title">Nom du Pays</title>
+  <title>Tableau de Bord Nation</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
-  <!-- EN-TÊTE DU SITE -->
   <header>
-    <div class="logo" id="header-logo">[NOM DU PAYS]</div>
-    <nav>
-      <ul id="nav-tabs">
-        <!-- Les onglets s'insèreront automatiquement ici -->
-      </ul>
-    </nav>
+    <h1 id="country-name">Chargement...</h1>
+    <p id="slogan"></p>
+    <a id="discord-btn" href="#" target="_blank" class="btn">Rejoindre le Discord</a>
   </header>
 
-  <!-- CONTENU DE LA PAGE -->
-  <main class="container">
-    <div id="main-content" class="card">
-      <!-- Le contenu dynamique s'affichera ici -->
-    </div>
+  <main>
+    <!-- BARRE DE STATISTIQUES -->
+    <section class="stats-grid" id="stats-container"></section>
+
+    <!-- JOURNAL / ACTUALITÉS -->
+    <section>
+      <h2>📢 Actualités du Pays</h2>
+      <div id="news-container"></div>
+    </section>
+
+    <!-- DIPLOMATIE -->
+    <section>
+      <h2>⚔️ Diplomatie & Alliances</h2>
+      <div class="cards-grid" id="diplomacy-container"></div>
+    </section>
+
+    <!-- MINISTÈRES -->
+    <section>
+      <h2>🏛️ Gouvernement</h2>
+      <div class="cards-grid" id="ministries-container"></div>
+    </section>
+
+    <!-- RECHERCHE & DÉVELOPPEMENT -->
+    <section>
+      <h2>🔬 Recherche & Développement</h2>
+      <div id="rd-container"></div>
+    </section>
+
+    <!-- BOUTIQUE -->
+    <section>
+      <h2>🛒 Boutique Nationale</h2>
+      <div id="shop-container"></div>
+    </section>
+
+    <!-- PARCELLES -->
+    <section>
+      <h2>🗺️ Gestion Immobilère</h2>
+      <table border="1" id="parcels-table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Coordonnées</th>
+            <th>Prix</th>
+            <th>Statut</th>
+            <th>Propriétaire</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- RÈGLEMENT -->
+    <section>
+      <h2>📜 Règlement Intérieur</h2>
+      <div id="rules-container"></div>
+    </section>
   </main>
 
-<script>
-  // Chargement dynamique des données depuis content.json sans toucher au style
-  fetch('content.json')
-    .then(response => response.json())
-    .then(data => {
-      // 1. Mise à jour des textes
-      if (data.country_name) {
-        document.querySelectorAll('.logo, header h1, [id*="logo"]').forEach(el => {
-          el.innerText = data.country_name.toUpperCase();
-        });
-      }
+  <!-- SCRIPT D'AFFICHAGE AUTOMATIQUE VIA CONTENT.JSON -->
+  <script>
+    fetch('content.json')
+      .then(response => response.json())
+      .then(data => {
+        // En-tête
+        document.getElementById('country-name').innerText = data.country_name + " (" + data.server_name + ")";
+        document.getElementById('slogan').innerText = data.slogan;
+        document.getElementById('discord-btn').href = data.discord_link;
 
-      const navUl = document.querySelector('nav ul');
-      const mainContent = document.querySelector('.card, main');
-
-      if (navUl && mainContent) {
-        // Vider la navigation pour la reconstruire dynamiquement
-        navUl.innerHTML = '';
-
-        // Bouton ACCUEIL
-        const homeLi = document.createElement('li');
-        homeLi.innerHTML = `<a href="#" class="active">Accueil</a>`;
-        homeLi.onclick = (e) => {
-          e.preventDefault();
-          location.reload(); // Recharge la page pour revenir au contenu de base
-        };
-        navUl.appendChild(homeLi);
-
-        // Ajout dynamique de tous les autres onglets créés dans l'Admin
-        if (data.tabs && data.tabs.length > 0) {
-          data.tabs.forEach(tab => {
-            const li = document.createElement('li');
-            li.innerHTML = `<a href="#">${tab.title}</a>`;
-            li.onclick = (e) => {
-              e.preventDefault();
-              
-              // Mettre à jour la classe active sur le menu
-              document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-              li.querySelector('a').classList.add('active');
-
-              // Remplacer le contenu principal tout en gardant le style de la carte
-              mainContent.innerHTML = `
-                <h1 style="color: #f1c40f; margin-bottom: 20px;">${tab.title}</h1>
-                <div style="line-height: 1.6;">${tab.content}</div>
-              `;
-            };
-            navUl.appendChild(li);
-          });
+        // Stats
+        const statsBox = document.getElementById('stats-container');
+        for (const [key, val] of Object.entries(data.stats)) {
+          statsBox.innerHTML += `<div class="stat-card"><strong>${key.toUpperCase()}</strong>: ${val}</div>`;
         }
-      }
-    });
-</script>
+
+        // News
+        const newsBox = document.getElementById('news-container');
+        data.news.forEach(n => {
+          newsBox.innerHTML += `<div class="news-card"><h3>${n.title} <small>(${n.date})</small></h3><p><em>Par ${n.author}</em></p><p>${n.content}</p></div>`;
+        });
+
+        // Diplomatie
+        const diploBox = document.getElementById('diplomacy-container');
+        data.diplomacy.forEach(d => {
+          diploBox.innerHTML += `<div class="card"><h3>${d.nation_name}</h3><p><strong>Statut:</strong> ${d.relation}</p><p>${d.notes || ''}</p></div>`;
+        });
+
+        // Ministères
+        const miniBox = document.getElementById('ministries-container');
+        data.ministries.forEach(m => {
+          miniBox.innerHTML += `<div class="card"><h3>${m.name}</h3><p><strong>Joueur:</strong> ${m.player}</p><p>${m.description}</p></div>`;
+        });
+
+        // R&D
+        const rdBox = document.getElementById('rd-container');
+        for (const [branch, projects] of Object.entries(data.rd_branches)) {
+          let html = `<h3>Branche : ${branch.toUpperCase()}</h3>`;
+          projects.forEach(p => {
+            html += `<p>${p.title} - ${p.progress}%</p><progress value="${p.progress}" max="100"></progress>`;
+          });
+          rdBox.innerHTML += html;
+        }
+
+        // Boutique
+        const shopBox = document.getElementById('shop-container');
+        data.shop.forEach(cat => {
+          let html = `<h3>${cat.category_name}</h3><ul>`;
+          cat.items.forEach(item => {
+            html += `<li><strong>${item.item_name}</strong> - ${item.price} (${item.unit}) [${item.status}]</li>`;
+          });
+          html += `</ul>`;
+          shopBox.innerHTML += html;
+        });
+
+        // Parcelles
+        const parcelTable = document.getElementById('parcels-table').querySelector('tbody');
+        data.parcels.forEach(p => {
+          parcelTable.innerHTML += `<tr><td>${p.name}</td><td>${p.coords}</td><td>${p.price} $</td><td>${p.status}</td><td>${p.owner}</td></tr>`;
+        });
+
+        // Règlement
+        const rulesBox = document.getElementById('rules-container');
+        data.rules.forEach(r => {
+          rulesBox.innerHTML += `<div class="rule-card"><h3>${r.title}</h3><p>${r.content}</p></div>`;
+        });
+      })
+      .catch(err => console.error("Erreur de chargement des données :", err));
+  </script>
 </body>
 </html>
