@@ -19,6 +19,7 @@ collections:
           - { label: "Slogan", name: "slogan", widget: "string" }
           - { label: "Description / Message d'accueil", name: "description", widget: "text" }
           - { label: "Lien Discord", name: "discord_link", widget: "string" }
+          - { label: "Lien de la Dynmap / BlueMap (iFrame)", name: "dynmap_url", widget: "string", required: false }
 
           # --- 📊 STATISTIQUES DU PAYS ---
           - label: "Statistiques du Pays"
@@ -33,6 +34,28 @@ collections:
               - { label: "Date de création", name: "created_at", widget: "string" }
               - { label: "Nombre de joueurs", name: "players_count", widget: "number" }
               - { label: "Solde en Banque ($)", name: "bank_balance", widget: "string" }
+
+          # --- 📢 JOURNAL & ACTUALITÉS ---
+          - label: "Journal & Actualités du Pays"
+            name: "news"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.date}})"
+            fields:
+              - { label: "Titre de l'annonce", name: "title", widget: "string" }
+              - { label: "Date de publication", name: "date", widget: "string" }
+              - { label: "Auteur / Rôle", name: "author", widget: "string" }
+              - { label: "Contenu de l'annonce", name: "content", widget: "text" }
+
+          # --- ⚔️ DIPLOMATIE & ALLIANCES ---
+          - label: "Diplomatie Internationales"
+            name: "diplomacy"
+            widget: "list"
+            summary: "{{fields.nation_name}} - {{fields.relation}}"
+            fields:
+              - { label: "Nom de la Faction / Pays", name: "nation_name", widget: "string" }
+              - { label: "Relation", name: "relation", widget: "select", options: ["Allié", "PNA (Pacte Non-Agression)", "Neutre", "En Guerre", "Embargo"] }
+              - { label: "Lien du Blason / Drapeau (URL)", name: "flag_url", widget: "string", required: false }
+              - { label: "Notes / Traités signés", name: "notes", widget: "string", required: false }
 
           # --- 🏛️ MINISTÈRES & GOUVERNEMENT ---
           - label: "Ministères & Cadres"
@@ -103,7 +126,7 @@ collections:
             widget: "list"
             summary: "{{fields.category_name}}"
             fields:
-              - { label: "Nom de la sous-section (ex: Minerais, Armes, Consommables...)", name: "category_name", widget: "string" }
+              - { label: "Nom de la sous-section", name: "category_name", widget: "string" }
               - label: "Articles"
                 name: "items"
                 widget: "list"
@@ -111,16 +134,25 @@ collections:
                 fields:
                   - { label: "Nom de l'item", name: "item_name", widget: "string" }
                   - { label: "Prix ($)", name: "price", widget: "string" }
-                  - { label: "Format / Quantité (ex: /stack, /unité, Sur commande)", name: "unit", widget: "string" }
+                  - { label: "Format / Quantité", name: "unit", widget: "string" }
                   - { label: "Description (facultatif)", name: "description", widget: "string", required: false }
                   - { label: "Statut", name: "status", widget: "select", options: ["En Stock", "Rupture", "Sur Commande"], default: "En Stock" }
 
-          # --- 📄 ONGLETS & PAGES SUR MESURE ---
+          # --- 📜 RÈGLEMENT & CULTURES ---
+          - label: "Règlement Intérieur"
+            name: "rules"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Titre de la règle / section", name: "title", widget: "string" }
+              - { label: "Détails / Sanctions", name: "content", widget: "markdown" }
+
+          # --- 📄 ONGLETS SUR MESURE ---
           - label: "Autres Onglets Personnalisés"
             name: "tabs"
             widget: "list"
             summary: "{{fields.title}}"
             fields:
               - { label: "Titre de l'onglet", name: "title", widget: "string" }
-              - { label: "Identifiant unique (en minuscules, ex: lore)", name: "id", widget: "string" }
+              - { label: "Identifiant unique (minuscules, ex: lore)", name: "id", widget: "string" }
               - { label: "Contenu (Texte ou Markdown)", name: "content", widget: "markdown" }
